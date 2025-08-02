@@ -151,3 +151,8 @@ hatch_js/labextension
 
 # Rust
 target
+
+# Test parts
+hatch_js/tests/test_project_basic/js/dist
+hatch_js/tests/test_project_basic/js/node_modules
+hatch_js/tests/test_project_basic/project/extension

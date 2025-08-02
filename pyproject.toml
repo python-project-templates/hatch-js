@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend="hatchling.build"
+requires = ["hatchling>=1.20"]
+build-backend = "hatchling.build"
 
 [project]
 name = "hatch-js"
@@ -10,7 +10,15 @@ readme = "README.md"
 license = { text = "Apache-2.0" }
 version = "0.1.0"
 requires-python = ">=3.9"
-keywords = []
+keywords = [
+    "hatch",
+    "python",
+    "build",
+    "js",
+    "javascript",
+    "yarn",
+    "pnpm",
+]
 
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -23,9 +31,13 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: Apache Software License",
 ]
 
-dependencies = []
+dependencies = [
+    "hatchling>=1.20",
+    "pydantic",
+]
 
 [project.optional-dependencies]
 develop = [
@@ -42,9 +54,16 @@ develop = [
     "twine",
     "uv",
     "wheel",
+    # test
+    "pytest",
+    "pytest-cov",
 ]
 
-[project.scripts]
+[project.entry-points.hatch]
+js = "hatch_js.hooks"
+
+# [project.scripts]
+# hatch-js = "hatch_js.cli:main"
 
 [project.urls]
 Repository = "https://github.com/python-project-templates/hatch-js"
@@ -74,7 +93,7 @@ ignore = [
 ]
 
 [tool.coverage.run]
-branch = true
+branch = false
 omit = [
     "hatch_js/tests/integration/",
 ]

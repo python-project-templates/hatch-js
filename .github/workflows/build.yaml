@@ -39,6 +39,11 @@ jobs:
       with:
         version: ${{ matrix.python-version }}
 
+    - uses: actions-ext/node/setup@main
+      with:
+        version: 20.x
+        js_folder: hatch_js/tests/test_project_basic/js
+
     - name: Install dependencies
       run: make develop
 
