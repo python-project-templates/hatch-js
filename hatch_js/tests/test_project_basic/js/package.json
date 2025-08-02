@@ -1,0 +1,43 @@
+{
+  "name": "project",
+  "version": "0.1.0",
+  "description": "",
+  "repository": "git@github.com:python-project-templates/hatch-js.git",
+  "author": "hatch-js authors <3105306+timkpaine@users.noreply.github.com>",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "unpkg": "dist/cdn/index.js",
+  "jsdelivr": "dist/cdn/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/esm/index.d.ts",
+      "default": "./dist/esm/index.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/**/*",
+    "index.d.ts"
+  ],
+  "types": "./dist/esm/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "clean": "rm -rf dist playwright-report ../project/extension",
+    "preinstall": "npx only-allow pnpm",
+    "prepack": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@finos/perspective-esbuild-plugin": "^3.2.1",
+    "@prospective.co/procss": "^0.1.17",
+    "cpy": "^11.1.0",
+    "esbuild": "^0.25.5",
+    "esbuild-plugin-less": "^1.3.25",
+    "npm-run-all": "^4.1.5"
+  }
+}

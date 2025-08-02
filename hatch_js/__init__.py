@@ -1,1 +1,5 @@
 __version__ = "0.1.0"
+
+from .hooks import hatch_register_build_hook
+from .plugin import HatchJsBuildHook
+from .structs import *
