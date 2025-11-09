@@ -9,8 +9,7 @@ description = "Hatch plugin for JavaScript builds"
 readme = "README.md"
 license = { text = "Apache-2.0" }
 version = "0.1.0"
-<<<<<<< before updating
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 keywords = [
     "hatch",
     "python",
@@ -20,10 +19,6 @@ keywords = [
     "yarn",
     "pnpm",
 ]
-=======
-requires-python = ">=3.10"
-keywords = []
->>>>>>> after updating
 
 classifiers = [
     "Development Status :: 3 - Alpha",
