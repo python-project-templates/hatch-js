@@ -12,7 +12,7 @@ authors = [
 description = "Hatch plugin for JavaScript builds"
 readme = "README.md"
 license = { text = "Apache-2.0" }
-version = "0.1.0"
+version = "0.1.1"
 requires-python = ">=3.10"
 keywords = [
     "hatch",
@@ -75,7 +75,7 @@ Repository = "https://github.com/python-project-templates/hatch-js"
 Homepage = "https://github.com/python-project-templates/hatch-js"
 
 [tool.bumpversion]
-current_version = "0.1.0"
+current_version = "0.1.1"
 commit = true
 tag = true
 commit_args = "-s"
