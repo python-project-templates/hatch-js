@@ -88,7 +88,9 @@ class HatchJsBuildPlan(HatchJsBuildConfig):
         chdir(self.path)
 
         for command in self.commands:
-            system_call(command)
+            ret = system_call(command)
+            if ret != 0:
+                raise RuntimeError(f"hatch-js build command failed with exit code {ret}: {command}")
 
         # Check that all targets exist
         # Go back to original path
