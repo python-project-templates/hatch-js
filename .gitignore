@@ -151,4 +151,12 @@ hatch_js/tests/test_project_basic/project/extension
 # Hydra
 outputs/
 multirun/
+<<<<<<< before updating
+>>>>>>> after updating
+=======
+
+# AI
+ROADMAP.md
+AGENTS.md
+.github/hooks/sdlc.json
 >>>>>>> after updating
