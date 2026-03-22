@@ -142,13 +142,16 @@ hatch_js/labextension
 # Rust
 target
 
-<<<<<<< before updating
+# Hydra
+outputs/
+multirun/
+
+# AI
+ROADMAP.md
+AGENTS.md
+.github/hooks/sdlc.json
+
 # Test parts
 hatch_js/tests/test_project_basic/js/dist
 hatch_js/tests/test_project_basic/js/node_modules
 hatch_js/tests/test_project_basic/project/extension
-=======
-# Hydra
-outputs/
-multirun/
->>>>>>> after updating
