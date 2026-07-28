@@ -3,7 +3,7 @@ from __future__ import annotations
 from os import chdir, curdir, system as system_call
 from pathlib import Path
 from shutil import which
-from typing import List, Literal, Optional
+from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -18,20 +18,20 @@ Toolchain = Literal["npm", "yarn", "pnpm", "jlpm"]
 class HatchJsBuildConfig(BaseModel):
     """Build config values for Hatch Js Builder."""
 
-    name: Optional[str] = Field(default=None)
-    verbose: Optional[bool] = Field(default=False)
+    name: str | None = Field(default=None)
+    verbose: bool | None = Field(default=False)
 
-    path: Optional[Path] = Field(default=None, description="Path to the JavaScript project. Defaults to the current directory.")
-    tool: Optional[Toolchain] = Field(default="npm", description="Command to run for building the project, e.g., 'npm', 'yarn', 'pnpm'")
+    path: Path | None = Field(default=None, description="Path to the JavaScript project. Defaults to the current directory.")
+    tool: Toolchain | None = Field(default="npm", description="Command to run for building the project, e.g., 'npm', 'yarn', 'pnpm'")
 
-    install_cmd: Optional[str] = Field(
+    install_cmd: str | None = Field(
         default=None, description="Custom command to run for installing dependencies. If specified, overrides the default install command."
     )
-    build_cmd: Optional[str] = Field(
+    build_cmd: str | None = Field(
         default="build", description="Custom command to run for building the project. If specified, overrides the default build command."
     )
 
-    targets: Optional[List[str]] = Field(default_factory=list, description="List of ensured targets to build")
+    targets: list[str] | None = Field(default_factory=list, description="List of ensured targets to build")
 
     # Check that tool exists
     @field_validator("tool", mode="before")
@@ -44,7 +44,7 @@ class HatchJsBuildConfig(BaseModel):
     # Validate path
     @field_validator("path", mode="before")
     @classmethod
-    def validate_path(cls, path: Optional[Path]) -> Path:
+    def validate_path(cls, path: Path | None) -> Path:
         if path is None:
             return Path.cwd()
         if not isinstance(path, Path):
@@ -55,7 +55,7 @@ class HatchJsBuildConfig(BaseModel):
 
 
 class HatchJsBuildPlan(HatchJsBuildConfig):
-    commands: List[str] = Field(default_factory=list)
+    commands: list[str] = Field(default_factory=list)
 
     def generate(self):
         self.commands = []
