@@ -12,7 +12,7 @@ from .utils import import_string
 __all__ = ("HatchJsBuildHook",)
 
 
-class HatchJsBuildHook(BuildHookInterface[HatchJsBuildConfig]):
+class HatchJsBuildHook(BuildHookInterface):
     """The hatch-js build hook."""
 
     PLUGIN_NAME = "hatch-js"
