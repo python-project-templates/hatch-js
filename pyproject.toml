@@ -48,6 +48,7 @@ develop = [
     "bump-my-version",
     "check-dist",
     "codespell",
+    "editables",
     "hatchling",
     "mdformat",
     "mdformat-frontmatter",
