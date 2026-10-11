@@ -5,11 +5,14 @@ from pathlib import Path
 from shutil import which
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+from .licenses import PnpmLicenseConfig
 
 __all__ = (
     "HatchJsBuildConfig",
     "HatchJsBuildPlan",
+    "PnpmLicenseConfig",
 )
 
 Toolchain = Literal["npm", "yarn", "pnpm", "jlpm"]
@@ -32,6 +35,13 @@ class HatchJsBuildConfig(BaseModel):
     )
 
     targets: list[str] | None = Field(default_factory=list, description="List of ensured targets to build")
+    licenses: PnpmLicenseConfig | None = Field(default=None, description="Opt-in pnpm dependency license collection.")
+
+    @model_validator(mode="after")
+    def validate_license_tool(self) -> HatchJsBuildConfig:
+        if self.licenses is not None and self.tool != "pnpm":
+            raise ValueError("License collection currently requires tool = 'pnpm'.")
+        return self
 
     # Check that tool exists
     @field_validator("tool", mode="before")
