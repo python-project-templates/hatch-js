@@ -85,7 +85,7 @@ class HatchJsBuildPlan(HatchJsBuildConfig):
 
         # First navigate to the project path
         cwd = Path(curdir).resolve()
-        chdir(self.path)
+        chdir(self.path or cwd)
 
         for command in self.commands:
             ret = system_call(command)
@@ -95,7 +95,7 @@ class HatchJsBuildPlan(HatchJsBuildConfig):
         # Check that all targets exist
         # Go back to original path
         chdir(str(cwd))
-        for target in self.targets:
+        for target in self.targets or []:
             if not Path(target).resolve().exists():
                 raise FileNotFoundError(f"Target '{target}' does not exist after build. Please check your build configuration.")
         return self.commands
